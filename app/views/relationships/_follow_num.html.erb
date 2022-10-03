@@ -1,0 +1,7 @@
+<tr><%= link_to follows_user_path(user) do %>
+  <h6>フォロー<%= following_users.count %></h6>
+</tr><% end %>&nbsp;&nbsp;
+<tr><%= link_to followers_user_path(user) do %>
+  <h6>フォロワー<%= follower_users.count %></h6>
+</tr><% end %>
+<!--これいらんわ-->

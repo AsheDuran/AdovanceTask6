@@ -1,0 +1,6 @@
+$(".replace_view").html("<%= j(render 'books/index', books: @books) %>")
+
+<!--非同期の際に作成-->
+<!--$()はbooks/indexに指定したclass名,右側はbooks/indexで上書きする部分-->
+<!--$('#replace_view').html("<!%= j(render 'books/index', books: @books) %>");-->
+<!--5行目はid指定したとき-->
