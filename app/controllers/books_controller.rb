@@ -10,9 +10,17 @@ class BooksController < ApplicationController
   end
 
   def index
-    @books = Book.all
+    #@books = Book.all
+    #@book = Book.new
+    #@user = current_user
+
+    to  = Time.current.at_end_of_day
+    from  = (to - 6.day).at_beginning_of_day
+    @books = Book.includes(:favorited_users).
+      sort_by {|x|
+        x.favorited_users.includes(:favorites).where(created_at: from...to).size
+      }.reverse
     @book = Book.new
-    @user = current_user
   end
 
   def create
@@ -57,3 +65,8 @@ class BooksController < ApplicationController
     redirect_to books_path unless @book.user == current_user
   end
 end
+
+# sort {|a,b|
+    #b.favorited_users.includes(:favorites).where(created_at: from...to).size <=>
+    # a.favorited_users.includes(:favorites).where(created_at: from...to).size
+#}
