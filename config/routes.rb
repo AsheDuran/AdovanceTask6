@@ -19,7 +19,8 @@ Rails.application.routes.draw do
     get 'followers' => 'relationships#followers', as: 'followers'
   end
 
-  resources :groups, except: [:destroy]#exceptは省くやつ
+  #resources :groups, except: [:destroy]--exceptは省くやつ
+  resources :groups, only: [:new, :index, :show, :create, :edit, :update]
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
