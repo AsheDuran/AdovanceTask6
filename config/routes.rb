@@ -1,6 +1,5 @@
 Rails.application.routes.draw do
-  get 'relationships/followings'
-  get 'relationships/followers'
+
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   devise_for :users
@@ -8,6 +7,9 @@ Rails.application.routes.draw do
   get "home/about"=>"homes#about"
   get "search" => "searches#search"#Searchesコントローラーのsearchアクションが実行されるように定義
   #get '/search', to: 'searches#search' でもいける
+  get 'chat/:id', to: 'chats#show', as: 'chat'#chat機能で追記
+  resources :chats, only: [:create]
+
 
   resources :books, only: [:index,:show,:edit,:create,:destroy,:update] do
     resources :book_comments, only: [:create, :destroy]
@@ -15,9 +17,12 @@ Rails.application.routes.draw do
   end
   resources :users, only: [:index,:show,:edit,:update] do#userのネストはフォロワー機能
     resource :relationships, only: [:create, :destroy]
-    get 'followings' => 'relationships#followings', as: 'followings'
-    get 'followers' => 'relationships#followers', as: 'followers'
+    get 'relationships/followings' => 'relationships#followings', as: 'followings'
+    get "relationships/followers" => 'relationships#followers', as: 'followers'
   end
+
+  get 'chats/show'
+
 
   #resources :groups, except: [:destroy]--exceptは省くやつ
   resources :groups, only: [:new, :index, :show, :create, :edit, :update]

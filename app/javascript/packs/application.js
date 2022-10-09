@@ -12,8 +12,9 @@ import "popper.js"
 import "bootstrap"
 import '@fortawesome/fontawesome-free/js/all';
 import "../stylesheets/application"
-import "jquery_ujs"//非同期機能追加時に追加
+// import "jquery_ujs"//非同期機能追加時に追加
 
 Rails.start()
 Turbolinks.start()
 ActiveStorage.start()
+// window.$ = window.jQuery = require('jquery');//5段階評価を実装時に追記

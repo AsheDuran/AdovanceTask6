@@ -15,6 +15,9 @@ class User < ApplicationRecord
   has_many :followings, through: :relationships, source: :followed#フォロー機能で追記
   has_many :followers, through: :reverse_of_relationships, source: :follower#フォロー機能で追記
 
+  has_many :user_rooms, dependent: :destroy#チャット機能で追記
+  has_many :chats, dependent: :destroy#チャット機能で追記
+
   has_one_attached :profile_image
 
   validates :name, length: { minimum: 2, maximum: 20 }, uniqueness: true

@@ -20,10 +20,11 @@
 
 <div class='row'>
   <% if current_user != user %><!--この表記で自分のフォローbtnの表示を消す-->
-    <td><%= render "relationships/follow_btn", user: user %></td>
+    <td><%= render "relationships/follow_btn", user: user %><span><%= link_to 'Begin Chat', chat_path(user.id) %></span></td>
   <% else %>
     <%= link_to edit_user_path(user), class: "btn btn-outline-secondary btn-block" do %>
       <i class="fas fa-user-cog"></i>
     <% end %>
   <% end %>
 </div>
+<!-- current_userと@userが一致していない場合に`Begin Chat`を表示 -->
