@@ -7,6 +7,8 @@ class BooksController < ApplicationController
     @book_new = Book.new
     @book_comment = BookComment.new#モデル大文字にしたっけ？多分,Book_controllerで作成したから大文字
     @user = @book.user
+    
+    
   end
 
   def index

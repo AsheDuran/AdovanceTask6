@@ -17,6 +17,7 @@ class User < ApplicationRecord
 
   has_many :user_rooms, dependent: :destroy#チャット機能で追記
   has_many :chats, dependent: :destroy#チャット機能で追記
+  has_many :rooms, through: :user_rooms#解答で足した
 
   has_one_attached :profile_image
 

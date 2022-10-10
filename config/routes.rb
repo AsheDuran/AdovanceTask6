@@ -7,8 +7,8 @@ Rails.application.routes.draw do
   get "home/about"=>"homes#about"
   get "search" => "searches#search"#Searchesコントローラーのsearchアクションが実行されるように定義
   #get '/search', to: 'searches#search' でもいける
-  get 'chat/:id', to: 'chats#show', as: 'chat'#chat機能で追記
-  resources :chats, only: [:create]
+  #chat機能で追記 get 'chat/:id', to: 'chats#show', as: 'chat' いらんかな
+  resources :chats, only: [:show, :create]
 
 
   resources :books, only: [:index,:show,:edit,:create,:destroy,:update] do
@@ -20,9 +20,6 @@ Rails.application.routes.draw do
     get 'relationships/followings' => 'relationships#followings', as: 'followings'
     get "relationships/followers" => 'relationships#followers', as: 'followers'
   end
-
-  get 'chats/show'
-
 
   #resources :groups, except: [:destroy]--exceptは省くやつ
   resources :groups, only: [:new, :index, :show, :create, :edit, :update]
