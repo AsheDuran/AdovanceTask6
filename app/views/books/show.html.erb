@@ -19,6 +19,23 @@
           <td><%= @book.body %></td>
           <td>コメント数: <%= @book.book_comments.count %></td><!--コメントで追記-->
           <td><%= render "favorites/btn", book: @book %></td><!--いいねで追記-->
+
+          <td>
+            <div id="star-rate<%= @book.id%>"></div><!--見本には/td>やった-->
+            <script>
+              $('#star-rate<%= @book.id %>').empty();
+              $('#star-rate<%= @book.id%>').raty({
+                size      : 36,
+                starOff   : '<%= asset_path('star-off.png') %>',
+                starOn    : '<%= asset_path('star-on.png') %>',
+                half      : false,
+                readOnly: true,
+                score: <%= @book.star %>,
+              });
+             </script>
+          </td>
+
+
           <% if @book.user == current_user %>
             <td><%= link_to 'Edit', edit_book_path(@book), class: "btn btn-sm btn-success" %></td>
             <td><%= link_to 'Destroy', @book, method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-sm btn-danger"%></td>

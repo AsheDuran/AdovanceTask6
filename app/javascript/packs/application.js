@@ -17,6 +17,9 @@ import "../stylesheets/application"
 Rails.start()
 Turbolinks.start()
 ActiveStorage.start()
-// window.$ = window.jQuery = require('jquery');//5段階評価を実装時に追記
+
+window.$ = window.jQuery = require('jquery');//5段階評価を実装時に追記
+require('packs/raty')
+
 require("chartkick") // 追記課題8b
 require("chart.js") // 追記課題8b

@@ -7,8 +7,8 @@ class BooksController < ApplicationController
     @book_new = Book.new
     @book_comment = BookComment.new#モデル大文字にしたっけ？多分,Book_controllerで作成したから大文字
     @user = @book.user
-    
-    
+
+
   end
 
   def index
@@ -59,7 +59,7 @@ class BooksController < ApplicationController
   private
 
   def book_params
-    params.require(:book).permit(:title, :body)
+    params.require(:book).permit(:title, :body, :star)
   end
 
   def ensure_correct_book
