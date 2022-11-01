@@ -18,22 +18,20 @@
         <td><%= book.body %></td>
         <td>コメント数: <%= book.book_comments.count %></td><!--コメントで追加-->
         <td><%= render "favorites/btn", book: book %></td><!--イイネで追加--><!--非同期の際bookに＠をつけないのは|book|のため-->
-
         <td>
-          <div id="star-rate<%= book.id%>"> </td>
+          <div id="star-rate<%= @book.id%>"></div><!--見本には/td>やった-->
           <script>
-            $('#star-rate<%= book.id %>').empty();
-            $('#star-rate<%= book.id%>').raty({
+            $('#star-rate<%= @book.id %>').empty();
+            $('#star-rate<%= @book.id%>').raty({
               size      : 36,
               starOff   : '<%= asset_path('star-off.png') %>',
               starOn    : '<%= asset_path('star-on.png') %>',
               half      : false,
               readOnly: true,
-              score: <%= book.star %>,
+              score: <%= @book.star %>,
             });
-          </script>
-          </div>
-
+           </script>
+          </td>
       </tr>
     <% end %>
   </tbody>
